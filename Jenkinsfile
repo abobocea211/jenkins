@@ -8,19 +8,6 @@ pipeline {
         AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
     }
 
-   agent  any
-    stages {
-        stage('checkout') {
-            steps {
-                 script{
-                        dir("terraform")
-                        {
-                            git "https://github.com/abobocea211/jenkins.git"
-                        }
-                    }
-                }
-            }
-
         stage('Plan') {
             steps {
                 sh 'pwd;cd terraform/ ; terraform init'
